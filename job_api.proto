@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+option objc_class_prefix = "MASS";
+
+package job_api;
+
+// The job service definition.
+service JobService {
+  // Start a job
+  rpc Start(StartRequest) returns (StartReply) {}
+
+  // Stop a job
+  rpc Stop(StopRequest) returns (StopReply) {}
+
+}
+
+//
+// Request/Reply for Starting a job
+//
+message StartRequest {
+  string command = 1;
+}
+message StartReply {
+  uint64 job_ID = 1;
+}
+
+
+//
+// Request/Reply for Stopping a job
+//
+message StopRequest {
+  uint64 job_id = 1;
+}
+message StopReply {
+  // Nothing to be returned but an empty message is required.
+}
